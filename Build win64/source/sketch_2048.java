@@ -41,6 +41,7 @@ int newX, newY;                             //Contains the place in the grid arr
 
 boolean canMove;                      //Used to allow user movement only when the backend calculations are done
 boolean lose;                         //True if there are no more possible moves left
+boolean win;                          //True if there's a 2048 tile on the grid
 
 //Runs once on application launch
 public void setup(){
@@ -78,6 +79,7 @@ public void setup(){
    score = 0;
    
    lose = false;
+   win = false;
    
    //Generates 2 random tiles on the grid
    generate();
@@ -101,12 +103,18 @@ public void draw(){
   fill(0xff00FF00);
   rect(newX * 145 + 120, newY * 145 + 190, 15, 15);
   
-  if(lose){
+  if(lose || win){
     fill(220);
     rect(160, 337, 450, 140);
-    fill(255,0,0);
     textFont(f, 120);
-    text("DEFEAT", 171, 437); 
+    if(lose){
+      fill(255,0,0);
+      text("DEFEAT", 171, 437); 
+    }
+    else{
+      fill(0,255,0);
+      text("VICTORY", 171, 437);
+    }
     textSize(18);
     fill(255,255,255);
     text("PRESS SPACE TO RESTART", 270, 460); 
@@ -116,7 +124,7 @@ public void draw(){
 
 //Executes a move function based on user input
 public void keyPressed(){
-  if(canMove && !lose){
+  if(canMove && !lose && !win){
     if(keyCode == UP) move("UP");
     if(keyCode == DOWN) move("DOWN");
     if(keyCode == LEFT) move("LEFT");
@@ -512,6 +520,9 @@ class Value{
       //If the newly minted tile's number is bigger than the current gencap, update the gencap to the number
       if(pow(2, grid[i][j].getImgP())> genCap)
           genCap = (int)(pow(2, grid[i][j].getImgP()));
+          
+      if(genCap == 2048)
+          win = true;
 
   }
   

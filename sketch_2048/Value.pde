@@ -147,6 +147,9 @@ class Value{
       //If the newly minted tile's number is bigger than the current gencap, update the gencap to the number
       if(pow(2, grid[i][j].getImgP())> genCap)
           genCap = (int)(pow(2, grid[i][j].getImgP()));
+          
+      if(genCap == 2048)
+          win = true;
 
   }
   
