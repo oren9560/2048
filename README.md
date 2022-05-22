@@ -11,7 +11,7 @@ so you'll have to make do without them. Sorry <3
 ## How to Install and Run the Project
 
 * Download and install [processing](https://processing.org/download).
-* Download the ZIP file for the project from my [GitHub Page](https://github.com/oren9560/2048).  
+* Download the ZIP file for the project from my [GitHub Page](https://github.com/oren9561/2048).  
 * Launch the game and play
 * If you want to review the code, launch the sketch through processing.
 ## How to play the game
