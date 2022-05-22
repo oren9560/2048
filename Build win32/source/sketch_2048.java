@@ -18,7 +18,7 @@ public class sketch_2048 extends PApplet {
 
 /*
 TODO:
-  add animations - NOT POSSIBLE IN PROCESSING LOL
+  add animations - NOT POSSIBLE IN PROCESSING
 
 Colors:
   Table color / score / best - #bbada0
@@ -127,6 +127,12 @@ public void keyPressed(){
     if(key == ' ') setup();
 }
 
+public void keyReleased(){
+    
+    canMove = true;                    //Once the pressed key is released, the user can make his next move (to prevent spamming)
+  
+}
+
 //Moves ALL the tiles in the grid to the chosen direction and generates a new tile on the grid
 public void move(String dir){
   
@@ -184,8 +190,6 @@ public void move(String dir){
     for(int i=0; i<4; i++)
        for(int j=0; j<4; j++)
          grid[i][j].setChanged(false);
-         
-    canMove = true;                    //Once all movement is over, the user can move again
     
 }
 

@@ -1,6 +1,6 @@
 /*
 TODO:
-  add animations - NOT POSSIBLE IN PROCESSING LOL
+  add animations - NOT POSSIBLE IN PROCESSING
 
 Colors:
   Table color / score / best - #bbada0
@@ -109,6 +109,12 @@ void keyPressed(){
     if(key == ' ') setup();
 }
 
+void keyReleased(){
+    
+    canMove = true;                    //Once the pressed key is released, the user can make his next move (to prevent spamming)
+  
+}
+
 //Moves ALL the tiles in the grid to the chosen direction and generates a new tile on the grid
 void move(String dir){
   
@@ -166,8 +172,6 @@ void move(String dir){
     for(int i=0; i<4; i++)
        for(int j=0; j<4; j++)
          grid[i][j].setChanged(false);
-         
-    canMove = true;                    //Once all movement is over, the user can move again
     
 }
 
